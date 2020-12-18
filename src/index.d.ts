@@ -64,6 +64,10 @@ declare module 'material-ui-search-bar' {
        * The value of the text field.
        */
       value?: string;
+      /**
+       * The aria-label to pass down to the input, submit and cancel components
+       */
+      'aria-label'?: string;
   }
 
   const SearchBar: React.ComponentType<SearchBarProps>;

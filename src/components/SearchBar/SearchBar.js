@@ -62,6 +62,7 @@ const SearchBar = React.forwardRef(
       onRequestSearch,
       searchIcon,
       style,
+      'aria-label':ariaLabel,
       ...inputProps
     },
     ref
@@ -141,11 +142,16 @@ const SearchBar = React.forwardRef(
       },
     }));
 
+    const passDownProps = {
+        'aria-label': ariaLabel + " Input"
+    }
+
     return (
       <Paper className={classNames(classes.root, className)} style={style}>
         <div className={classes.searchContainer}>
           <Input
             {...inputProps}
+            inputProps={passDownProps}
             inputRef={inputRef}
             onBlur={handleBlur}
             value={value}
@@ -164,6 +170,7 @@ const SearchBar = React.forwardRef(
             [classes.iconButtonHidden]: value !== "",
           })}
           disabled={disabled}
+          aria-label={ariaLabel + " Submit Search"}
         >
           {React.cloneElement(searchIcon, {
             classes: { root: classes.icon },
@@ -175,6 +182,7 @@ const SearchBar = React.forwardRef(
             [classes.iconButtonHidden]: value === "",
           })}
           disabled={disabled}
+          aria-label={ariaLabel + " Cancel Search"}
         >
           {React.cloneElement(closeIcon, {
             classes: { root: classes.icon },
